@@ -39,26 +39,26 @@ class User < ModelBase
     num_likes.to_f/num_questions
   end
 
-  def create
-    QuestionDBConnection.instance.execute(<<-SQL, @f_name, @l_name)
-      INSERT INTO
-        users(f_name, l_name)
-      VALUES
-        (?,?)
-    SQL
-    @id = QuestionDBConnection.instance.last_insert_row_id
-  end
-
-  def update
-    QuestionDBConnection.instance.execute(<<-SQL, @f_name, @l_name, @id)
-      UPDATE
-        users
-      SET
-        f_name = ?, l_name = ?
-      WHERE
-        id = ?
-    SQL
-    @id = QuestionDBConnection.instance.last_insert_row_id
-  end
+  # def create
+  #   QuestionDBConnection.instance.execute(<<-SQL, @f_name, @l_name)
+  #     INSERT INTO
+  #       users(f_name, l_name)
+  #     VALUES
+  #       (?,?)
+  #   SQL
+  #   @id = QuestionDBConnection.instance.last_insert_row_id
+  # end
+  #
+  # def update
+  #   QuestionDBConnection.instance.execute(<<-SQL, @f_name, @l_name, @id)
+  #     UPDATE
+  #       users
+  #     SET
+  #       f_name = ?, l_name = ?
+  #     WHERE
+  #       id = ?
+  #   SQL
+  #   @id = QuestionDBConnection.instance.last_insert_row_id
+  # end
 
 end
